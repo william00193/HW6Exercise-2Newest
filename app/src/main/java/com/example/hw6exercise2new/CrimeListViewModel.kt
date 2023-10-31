@@ -17,7 +17,7 @@ import java.util.*
                     title ="Crime #$i",
                     date = Date(),
                     isSolved = i % 2 == 0,
-                    requiresPolice = i % 4 == 0,
+                    requiresPolice = i % 2 == 0,
                 )
 
                 crimes += crime
