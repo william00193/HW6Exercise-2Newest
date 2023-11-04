@@ -17,7 +17,10 @@ import java.util.*
                     title ="Crime #$i",
                     date = Date(),
                     isSolved = i % 2 == 0,
-                    requiresPolice = i % 2 == 0,
+                    requiresPolice = when ((0..1).shuffled().first()) {
+                        0 -> false
+                        else -> true
+                    }
                 )
 
                 crimes += crime

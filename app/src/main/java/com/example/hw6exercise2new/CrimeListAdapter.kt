@@ -21,8 +21,8 @@ class CrimeHolder(
 //New formatted date for each entry
 //Documentation: StackOverFlow -- How to use "android.text.format.DateFormat" with Kotlin?
         val crimeDate = SimpleDateFormat("EE. MMM. dd, yyyy", Locale.US)
-        val NewDate : String = crimeDate.format(crime.date).toString()
-        binding.crimeDate.text = NewDate
+        val newDate : String = crimeDate.format(crime.date).toString()
+        binding.crimeDate.text = newDate
 
         binding.root.setOnClickListener {
             Toast.makeText(
@@ -47,9 +47,19 @@ class CrimeHolder(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(crime: Crime) {
             binding.crimeTitle.text = crime.title
-            binding.crimeDate.text = crime.date.toString()
+
+
+//New formatted date for each entry
+//Documentation: StackOverFlow -- How to use "android.text.format.DateFormat" with Kotlin?
+            val crimeDate = SimpleDateFormat("EE. MMM. dd, yyyy", Locale.US)
+            val newDate : String = crimeDate.format(crime.date).toString()
+            binding.crimeDate.text = newDate
+
 
             binding.root.setOnClickListener {
+
+
+
 
                 Toast.makeText(
 
@@ -63,21 +73,40 @@ class CrimeHolder(
 
             }
 
-
+            var click = 0;
 
             binding.RequiresPolice.setOnClickListener {
 
-                Toast.makeText(
+                click++
 
-                    binding.root.context,
+                if (click == 1) {
 
-                    // Make the entire toast capitalized to emphasize intensity
+                    Toast.makeText(
 
-                    "POLICE CONTACTED REGARDING ${crime.title.uppercase()}!",
+                        binding.root.context,
 
-                    Toast.LENGTH_SHORT
+                        // Make the entire toast capitalized to emphasize intensity
+                        "POLICE CONTACTED REGARDING ${crime.title.uppercase()}!",
 
-                ).show()
+                        Toast.LENGTH_SHORT
+
+                    ).show()
+                } else {
+
+                    Toast.makeText(
+
+                        binding.root.context,
+
+                        // Make the entire toast capitalized to emphasize intensity
+                        "POLICE REQUIREMENT CANCELED REGARDING ${crime.title.uppercase()}!",
+
+                        Toast.LENGTH_SHORT
+
+                    ).show()
+
+                    click = 0;
+
+                }
 
             }
 

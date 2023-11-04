@@ -42,7 +42,11 @@ private const val TAG = "CrimeListFragment"
 
         val crimes = crimeListViewModel.crimes
         val adapter = CrimeListAdapter(crimes)
+        val adapter2 = CrimeListAdapter2(crimes)
+
         binding.crimeRecyclerView.adapter = adapter
+        binding.crimeRecyclerView.adapter = adapter2
+
 
         return binding.root
     }
